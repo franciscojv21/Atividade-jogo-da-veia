@@ -120,42 +120,93 @@ public class Tabuleiro {
                        """, a1, b1, c1,a2,b2,c2,a3,b3,c3);
    }
    
-   public void marcarJogada(char simbolo, String coordenada){
-     switch(coordenada){
+   public boolean marcarJogada(char simbolo, String coordenada){
+     switch(coordenada.toUpperCase()){
          case "A1":
-           this.a1 = simbolo;
-         break;
+           if(a1 != ' ')return false;
+           a1 = simbolo;
+           break;
          case "A2":           
-           this.a2 = simbolo;
-         break;  
+           if(a2 != ' ')return false;
+           a2 = simbolo;
+           break;  
          case "A3":  
-           this.a3 = simbolo;         
-         break;
+           if(a3 != ' ')return false;
+           a3 = simbolo;
+           break;
          case "B1":
-            this.b1 = simbolo;
-         break;   
+            if(b1 != ' ')return false;
+           b1 = simbolo;
+           break;
          case "B2":
-             this.b2 = simbolo;
-         break;    
+             if(b2 != ' ')return false;
+           b2 = simbolo;
+           break;
          case "B3":
-             this.b3 = simbolo;
-         break;
+             if(b3 != ' ')return false;
+           b3 = simbolo;
+           break;
          case "C1":
-             this.c1 = simbolo;
-         break;    
+             if(c1 != ' ')return false;
+           c1 = simbolo;
+           break;
          case "C2":
-             this.c2 = simbolo;
-         break;
+             if(c2 != ' ')return false;
+           c2 = simbolo;
+           break;
          case "C3":
-             this.c3 = simbolo;
-         break;        
+             if(c3 != ' ')return false;
+           c3 = simbolo;
+           break;
+           
+         default:
+             return false;
      } 
+         return true;
          
          
    }
-   
-   
-   
-   
-   
+
+    public void atualizarPlacar(int numeroJogador) {
+        int notaJ1 = 0;
+        int notaJ2 = 0;
+    if (numeroJogador == 1) {
+        notaJ1++;
+    } else if (numeroJogador == 2) {
+        notaJ2++;
+    }
+
+    System.out.println("\n===== PLACAR =====");
+    System.out.println("Jogador 1: " + notaJ1 + " ponto(s)");
+    System.out.println("Jogador 2: " + notaJ2 + " ponto(s)");
+    System.out.println("==================");
+    }
+    
+    public void reiniciarTabuleiro() {
+    a1 = ' ';
+    a2 = ' ';
+    a3 = ' ';
+    b1 = ' ';
+    b2 = ' ';
+    b3 = ' ';
+    c1 = ' ';
+    c2 = ' ';
+    c3 = ' ';
+
+    houveGanhadorUltimarodada = false;
+    jogadordaVez = 1;
+
+    System.out.println("Tabuleiro reiniciado!");
+   }
+    
+    public boolean isTabuleiroCheio() {
+    return a1 != ' ' && a2 != ' ' && a3 != ' '
+        && b1 != ' ' && b2 != ' ' && b3 != ' '
+        && c1 != ' ' && c2 != ' ' && c3 != ' ';
+  }
 }
+   
+   
+   
+   
+
